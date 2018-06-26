@@ -94,13 +94,13 @@ class KittyPanel {
         let title = webviewHelper.getTitle();
         // Cat Api Usage
         // TODO: Allow user to add custom api for more cats, allow switching to png or both png and gif
-        let CatApiUrl = `http://thecatapi.com/api/images/get?format=xml${type}&size=full&count=1&api_key=${apiKey}`;
+        let CatApiUrl = `https://thecatapi.com/api/images/get?format=xml${type}&size=full&count=1&api_key=${apiKey}`;
         //console.log(CatApiUrl);
         let response = await axios.get(CatApiUrl);
         
         //Cat Api returns XML Body, pass to XML2JS for parsing
         parseString(response.data, (err, result) => {
-            console.log(result);
+            //console.log(result);
 
             //XML2JS is pretty awful, look for better XML parser
             const catSrc = result.response.data[0].images[0].image[0].url[0];

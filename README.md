@@ -13,7 +13,8 @@
 
 Cats , Cats , and Cats
 
-## How to get them cats.
+## How to get them cats. 
+> Cats appear at random, the same cat appearing below is just a huge coincidence 😜
 
 ### The Kitty Button
 
@@ -25,13 +26,13 @@ Cats , Cats , and Cats
 
 ## Requirements
 
-A :heart: full of :cat: is required. 
+A 💖 full of 🐱 is required. 
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `kittyTime.apiKey`: Get api key from http://thecatapi.com/api-key-registration.html, unlocks more cats, `cats++`;
+* `kittyTime.apiKey`: Get api key from https://thecatapi.com/api-key-registration.html, unlocks more cats, `cats++`;
 * `kittyTime.imageType`: Image Type to show (Static / Animated / Both), defaults to Animated. 
 
 Example:
@@ -50,6 +51,18 @@ Developers have been caught spending more time looking at cats and kittens inste
 Development release of Kitty Time
 
 -----------------------------------------------------------------------------------------------------------
+
+### 0.0.8
+
+- Improve Readme
+- Change API to secure `https` endpoint
+- Bug Fixes (Cats got them all)
+
+-----------------------------------------------------------------------------------------------------------
+
+## Acknowledgments
+
+* [Cat Api](https://thecatapi.com)
 
 ## License
 
