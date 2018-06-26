@@ -2,6 +2,11 @@
 > Stressed after coding for hours? Need a break? Perhaps an inspiration? Something to calm your nerves after almost pushing that fatal git commit?  
 > It's Kitty Time! =(＾● ⋏ ●＾)= ෆ"
 
+
+[![Version](https://img.shields.io/vscode-marketplace/v/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time)
+[![Downloads](https://img.shields.io/vscode-marketplace/d/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time)
+[![Ratings](https://img.shields.io/vscode-marketplace/r/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time#review-details)
+
 ## Features
 
 ![CATS!!!](image/logo-128x128.png)
