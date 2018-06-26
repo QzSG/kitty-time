@@ -8,6 +8,14 @@
         "name": "Adrian",
         "url": "https://qz.sg"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/QzSG/kitty-time"
+    },
+    "bugs": {
+        "url": "https://github.com/QzSG/kitty-time/issues"
+    },
+    
     "icon": "image/logo-128x128.png",
     "galleryBanner": {
         "color": "#002f3a",
