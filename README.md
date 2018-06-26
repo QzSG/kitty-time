@@ -3,9 +3,9 @@
 > It's Kitty Time! =(＾● ⋏ ●＾)= ෆ"
 
 
-[![Version](https://img.shields.io/vscode-marketplace/v/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time)
-[![Downloads](https://img.shields.io/vscode-marketplace/d/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time)
-[![Ratings](https://img.shields.io/vscode-marketplace/r/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time#review-details)
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time)
+[![Downloads](https://vsmarketplacebadge.apphb.com/installs/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time)
+[![Ratings](https://vsmarketplacebadge.apphb.com/rating-short/QzSG.kitty-time.svg?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=QzSG.kitty-time#review-details)
 
 ## Features
 
