@@ -70,7 +70,7 @@ export default {
                 </div>
                 <div id="navbarMenuHero" class="navbar-menu">
                 <div class="navbar-end">
-                    <a class="navbar-item is-active" src="https://github.com/qzsg">
+                    <a class="navbar-item is-active" href="https://github.com/QzSG/kitty-time">
                         <span class="icon">
                         <i class="fab fa-github-alt fa-lg"></i>
                         </span>
