@@ -1,0 +1,75 @@
+{
+    "name": "kitty-time",
+    "displayName": "Kitty Time =(＾● ⋏ ●＾)= ෆ",
+    "description": "Stressed after coding for hours? Need a break? Perhaps an inspiration? Something to calm your nerves after almost pushing that fatal git commit? It's Kitty Time! =(＾● ⋏ ●＾)= ෆ",
+    "version": "0.0.1",
+    "publisher": "QzSG",
+    "author": {
+        "name": "Adrian",
+        "url": "https://qz.sg"
+    },
+    "icon": "image/logo-128x128.png",
+    "galleryBanner": {
+        "color": "#002f3a",
+        "theme": "light"
+    },
+    "keywords": [
+        "cat", "kitten", "neko", "destress","cute"
+    ],
+    "engines": {
+        "vscode": "^1.24.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "kittyTime.run",
+                "title": "Kitty Time =(＾● ⋏ ●＾)= ෆ"
+            }
+        ],
+        "configuration" :{
+            "title": "Kitty Time Configuration",
+            "properties": {
+                "kittyTime.apiKey" : {
+                    "title": "Api Key from Cat Api",
+                    "description": "Get api key from http://thecatapi.com/api-key-registration.html and paste here , unlocks more cats",
+                    "type" : "string"
+                },
+                "kittyTime.imageType" : {
+                    "title": "Image Type to show (Static / Animated / Both)",
+                    "description": "Animated = gifs :D , Both = Random",
+                    "type" : "string",
+                    "enum": [
+                        "animated", "static", "both"
+                    ],
+                    "default" : "animated"
+                }
+            }
+        }
+        
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.42",
+        "@types/node": "^7.0.43",
+        "@types/xml2js": "^0.4.3",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6"
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "xml2js": "^0.4.19"
+    }
+}
