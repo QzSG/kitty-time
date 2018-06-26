@@ -2,7 +2,7 @@
     "name": "kitty-time",
     "displayName": "Kitty Time =(＾● ⋏ ●＾)= ෆ",
     "description": "Stressed after coding for hours? Need a break? Perhaps an inspiration? Something to calm your nerves after almost pushing that fatal git commit? It's Kitty Time! =(＾● ⋏ ●＾)= ෆ",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "QzSG",
     "author": {
         "name": "Adrian",
@@ -15,14 +15,17 @@
     "bugs": {
         "url": "https://github.com/QzSG/kitty-time/issues"
     },
-    
     "icon": "image/logo-128x128.png",
     "galleryBanner": {
         "color": "#002f3a",
         "theme": "dark"
     },
     "keywords": [
-        "cat", "kitten", "neko", "destress","cute"
+        "cat",
+        "kitten",
+        "neko",
+        "destress",
+        "cute"
     ],
     "engines": {
         "vscode": "^1.24.0"
@@ -41,26 +44,27 @@
                 "title": "Kitty Time =(＾● ⋏ ●＾)= ෆ"
             }
         ],
-        "configuration" :{
+        "configuration": {
             "title": "Kitty Time Configuration",
             "properties": {
-                "kittyTime.apiKey" : {
+                "kittyTime.apiKey": {
                     "title": "Api Key from Cat Api",
                     "description": "Get api key from http://thecatapi.com/api-key-registration.html and paste here , unlocks more cats",
-                    "type" : "string"
+                    "type": "string"
                 },
-                "kittyTime.imageType" : {
+                "kittyTime.imageType": {
                     "title": "Image Type to show (Static / Animated / Both)",
                     "description": "Animated = gifs :D , Both = Random",
-                    "type" : "string",
+                    "type": "string",
                     "enum": [
-                        "animated", "static", "both"
+                        "animated",
+                        "static",
+                        "both"
                     ],
-                    "default" : "animated"
+                    "default": "animated"
                 }
             }
         }
-        
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
