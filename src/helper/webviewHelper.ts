@@ -48,6 +48,7 @@ export default {
                 
                 @keyframes fadein{0%{opacity:0;}100%{opacity:1; }}
                 @-webkit-keyframes fadein{0%{opacity:0;}100%{opacity:1;}}
+                .hero-foot .content {padding-top: 0.5em !important; padding-bottom: 0.5em !important;}
             </style>
         `;
     },
@@ -94,12 +95,19 @@ export default {
                 </h6>
             </div>
         </div>
-
-        <!-- Hero footer: will stick at the bottom -->
-        <div class="hero-foot">
-            
-        </div>
-        </section>
         `;
-    }
+    },
+    getFooter : (catFact : String) : String => {
+        return `
+            <!-- Hero footer: will stick at the bottom -->
+            <div class="hero-foot">
+                <div class="content has-text-centered">
+                    <p>
+                        ${catFact || "Cat Fact"}
+                    </p>
+                </div>
+            </div>
+            </section>
+        `;
+    } 
 }

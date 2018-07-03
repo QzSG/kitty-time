@@ -96,28 +96,36 @@ class KittyPanel {
         // TODO: Allow user to add custom api for more cats, allow switching to png or both png and gif
         let CatApiUrl = `https://thecatapi.com/api/images/get?format=xml${type}&size=full&count=1&api_key=${apiKey}`;
         //console.log(CatApiUrl);
-        let response = await axios.get(CatApiUrl);
+        let CatApiPromise = axios.get(CatApiUrl); 
+        let CatFactUrl = `https://catfact.ninja/fact`;
+        //console.log(CatApiUrl);
+        let CatFactPromise = axios.get(CatFactUrl); 
+
+        const [apiRes, factRes] = await Promise.all([CatApiPromise, CatFactPromise]);
         
         //Cat Api returns XML Body, pass to XML2JS for parsing
-        parseString(response.data, (err, result) => {
+        parseString(apiRes.data, (err, result) => {
             //console.log(result);
 
             //XML2JS is pretty awful, look for better XML parser
             const catSrc = result.response.data[0].images[0].image[0].url[0];
             const catUrl = result.response.data[0].images[0].image[0].source_url[0];
             //console.log(catSrc);
-            this._updateCat(catSrc, catUrl, title);
+            const catFact = factRes.data.fact;
+            this._updateCat(catSrc, catUrl, title, catFact);
         });
 
     }
 
-    private _updateCat(catSrc: string, catUrl: string, title: string) {
+    private _updateCat(catSrc: string, catUrl: string, title: string, catFact: string) {
         this._panel.title = "It's Kitty Time! =(＾● ⋏ ●＾)= ෆ";
-        this._panel.webview.html = this._getHtmlForWebview(catSrc, catUrl, title);
+        this._panel.webview.html = this._getHtmlForWebview( {catSrc, catUrl, title, catFact});
     }
 
-    private _getHtmlForWebview(catSrc: string, catUrl: string, title: string) {
-
+    private _getHtmlForWebview( data : { catSrc: string, catUrl: string, title: string, catFact: string} ) {
+        
+        const {catSrc, catUrl, title, catFact} = data;
+        
         // Use a nonce to whitelist inline srcs to be allowed to run
         const nonce = this.getNonce();
 
@@ -128,6 +136,7 @@ class KittyPanel {
             <body>
                 ${webviewHelper.getCustomInlineStyle(nonce)}
                 ${webviewHelper.getBody(catSrc, catUrl, title)}
+                ${webviewHelper.getFooter(catFact)}
             </body>
         </html>`;
     }

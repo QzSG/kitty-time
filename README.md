@@ -13,6 +13,12 @@
 
 Cats , Cats , and Cats
 
+## Now Includes Cat Facts!
+> Get a cool cat fact in the footer everytime!
+
+![CAT FACT!](image/cat-fact.png)
+
+
 ## How to get them cats. 
 > Cats appear at random, the same cat appearing below is just a huge coincidence 😜
 
@@ -60,9 +66,18 @@ Development release of Kitty Time
 
 -----------------------------------------------------------------------------------------------------------
 
+### 0.1.0
+
+- Added Cat Facts in footer
+- Some Bug Fixes (Cats got them again)
+
+-----------------------------------------------------------------------------------------------------------
+
+
 ## Acknowledgments
 
 * [Cat Api](https://thecatapi.com)
+* [Cat Facts](https://catfact.ninja/)
 
 ## License
 
