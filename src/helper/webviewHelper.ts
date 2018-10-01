@@ -20,7 +20,7 @@ export default {
         }
         return "";
     },
-    getHead : (nonce : string) :string => {
+    getHead : (nonce : string, bulmaCSSPath : string, fontAwesomeCSSPath : string) :string => {
         return `
             <head>
                 <meta charset="UTF-8">
@@ -28,11 +28,11 @@ export default {
                 Use a content security policy to only allow loading images from https or from our extension directory,
                 and only allow scripts that have a specific nonce.
                 -->
-                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src *; style-src https: 'nonce-${nonce}';font-src https: 'nonce-${nonce}'; script-src 'nonce-${nonce}';">
+                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src *; style-src vscode-resource: https: 'nonce-${nonce}';font-src vscode-resource: https: 'nonce-${nonce}'; script-src vscode-resource: 'nonce-${nonce}';">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>It's Kitty Time! =(＾● ⋏ ●＾)= ෆ</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" integrity="sha256-zIG416V1ynj3Wgju/scU80KAEWOsO5rRLfVyRDuOv7Q=" crossorigin="anonymous" />
-                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+                <link rel="stylesheet" href="${bulmaCSSPath}" integrity="sha256-zIG416V1ynj3Wgju/scU80KAEWOsO5rRLfVyRDuOv7Q=" crossorigin="anonymous" />
+                <link rel="stylesheet" href="${fontAwesomeCSSPath}" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
             </head>
         `;
     },

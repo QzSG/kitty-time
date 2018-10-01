@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 import axios from 'axios';
 import { parseString } from 'xml2js';
 import './helper/webviewHelper';
@@ -10,18 +11,19 @@ class KittyPanel {
     private static readonly viewType = 'kittyTime';
 
     private readonly _panel: vscode.WebviewPanel;
+    private readonly _extensionPath: string;
     
     private _config: vscode.WorkspaceConfiguration;
     private _disposables: vscode.Disposable[] = [];
 
-    public static createOrShow() {
+    public static createOrShow(extensionPath: string) {
         const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
         let configChange = false;
         vscode.workspace.onDidChangeConfiguration(() => {
             const currentDocument = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.document : undefined;
             if (KittyPanel.currentPanel) {
                 KittyPanel.currentPanel.dispose();
-                KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One);
+                KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One, extensionPath);
                 if (currentDocument) { vscode.window.showTextDocument(currentDocument, column);}
                 configChange = true;
             }
@@ -33,20 +35,23 @@ class KittyPanel {
                 KittyPanel.currentPanel._panel.reveal(column);
             }
         } else {
-            KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One);
+            KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One, extensionPath);
         }
         
     }
 
-    private constructor(column: vscode.ViewColumn) {
+    private constructor(column: vscode.ViewColumn, extensionPath: string) {
         
         this._config = this._updateConfig();
+        this._extensionPath = extensionPath;
         this._panel = vscode.window.createWebviewPanel(KittyPanel.viewType, "It's Kitty Time! =(＾● ⋏ ●＾)= ෆ", column, {
         
             enableScripts: true,
 
             // Restrict all local paths
-            localResourceRoots: [],
+            localResourceRoots: [
+                vscode.Uri.file(path.join(extensionPath, 'files'))
+            ],
 
             retainContextWhenHidden: true
         });
@@ -125,14 +130,22 @@ class KittyPanel {
     private _getHtmlForWebview( data : { catSrc: string, catUrl: string, title: string, catFact: string} ) {
         
         const {catSrc, catUrl, title, catFact} = data;
+
+        const bulmaCSSPathOnDisk = vscode.Uri.file(path.join(this._extensionPath, 'files', 'bulma.min.css'));
+        const fontAwesomeCSSPathOnDisk = vscode.Uri.file(path.join(this._extensionPath, 'files', 'all.css'));
+
+        // And the uri we use to load this script in the webview
+        const bulmaCSSPath = bulmaCSSPathOnDisk.with({ scheme: 'vscode-resource' });
         
+        const fontAwesomeCSSPath = fontAwesomeCSSPathOnDisk.with({ scheme: 'vscode-resource' });
+
         // Use a nonce to whitelist inline srcs to be allowed to run
         const nonce = this.getNonce();
 
         return `
         <!DOCTYPE html>
         <html lang="en">
-            ${webviewHelper.getHead(nonce)}
+            ${webviewHelper.getHead(nonce, bulmaCSSPath.toString(), fontAwesomeCSSPath.toString())}
             <body>
                 ${webviewHelper.getCustomInlineStyle(nonce)}
                 ${webviewHelper.getBody(catSrc, catUrl, title)}
