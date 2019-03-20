@@ -85,6 +85,12 @@ Development release of Kitty Time
 
 -----------------------------------------------------------------------------------------------------------
 
+### 0.3.0
+- Update packages
+- Fix broken theme detection to automatically set background and font colors according to user existing theme
+
+-----------------------------------------------------------------------------------------------------------
+
 ## Acknowledgments
 
 * [Cat Api](https://thecatapi.com)

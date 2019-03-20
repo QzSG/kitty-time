@@ -20,7 +20,7 @@ export default {
         }
         return "";
     },
-    getHead : (nonce : string, bulmaCSSPath : string, fontAwesomeCSSPath : string) :string => {
+    getHead : (nonce : string, bulmaCSSPath : string) :string => {
         return `
             <head>
                 <meta charset="UTF-8">
@@ -28,20 +28,20 @@ export default {
                 Use a content security policy to only allow loading images from https or from our extension directory,
                 and only allow scripts that have a specific nonce.
                 -->
-                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src *; style-src vscode-resource: https: 'nonce-${nonce}';font-src vscode-resource: https: 'nonce-${nonce}'; script-src vscode-resource: 'nonce-${nonce}';">
+                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src *; style-src vscode-resource: https: 'nonce-${nonce}';font-src vscode-resource: https: 'nonce-${nonce}'; script-src vscode-resource: https: 'nonce-${nonce}';">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>It's Kitty Time! =(＾● ⋏ ●＾)= ෆ</title>
                 <link rel="stylesheet" href="${bulmaCSSPath}" integrity="sha256-zIG416V1ynj3Wgju/scU80KAEWOsO5rRLfVyRDuOv7Q=" crossorigin="anonymous" />
-                <link rel="stylesheet" href="${fontAwesomeCSSPath}" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             </head>
         `;
     },
     getCustomInlineStyle : (nonce : string) : string => {
         return `
-            <style nonce="${nonce}" >
+            <style nonce='${nonce}' >
                 .hero, {background-color: var(--background-color) !important; color: var(--color) !important;} .title,.subtitle,.navbar-item,.navbar-link {color: var(--color) !important;}
                 a:hover { background-color: var( --vscode-button-hoverBackground) !important;}
-                body { color: var(--color) !important; background-color: var(--background-color) !important; justify-content: center; display: flex;} img{align-self: center; max-height: 60vh; max-width: 100vw;} body {animation: fadein ease 2s;
+                body { color: var(--vscode-editor-foreground) !important; background-color: var(--vscode-editor-background) !important; justify-content: center; display: flex;} img{align-self: center; max-height: 60vh; max-width: 100vw;} body {animation: fadein ease 2s;
                 animation-iteration-count: 1;  animation-fill-mode:forwards; /*when the spec is finished*/  -webkit-animation: fadein ease 2s;
                 -webkit-animation-iteration-count: 1;  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/ }
                 h6.subtitle.is-6 {margin-top: 1rem;}

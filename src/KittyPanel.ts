@@ -132,20 +132,17 @@ class KittyPanel {
         const {catSrc, catUrl, title, catFact} = data;
 
         const bulmaCSSPathOnDisk = vscode.Uri.file(path.join(this._extensionPath, 'files', 'bulma.min.css'));
-        const fontAwesomeCSSPathOnDisk = vscode.Uri.file(path.join(this._extensionPath, 'files', 'all.css'));
-
+        
         // And the uri we use to load this script in the webview
         const bulmaCSSPath = bulmaCSSPathOnDisk.with({ scheme: 'vscode-resource' });
         
-        const fontAwesomeCSSPath = fontAwesomeCSSPathOnDisk.with({ scheme: 'vscode-resource' });
-
         // Use a nonce to whitelist inline srcs to be allowed to run
         const nonce = this.getNonce();
 
         return `
         <!DOCTYPE html>
         <html lang="en">
-            ${webviewHelper.getHead(nonce, bulmaCSSPath.toString(), fontAwesomeCSSPath.toString())}
+            ${webviewHelper.getHead(nonce, bulmaCSSPath.toString())}
             <body>
                 ${webviewHelper.getCustomInlineStyle(nonce)}
                 ${webviewHelper.getBody(catSrc, catUrl, title)}
