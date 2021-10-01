@@ -2,7 +2,7 @@
     "name": "kitty-time",
     "displayName": "Kitty Time =(＾● ⋏ ●＾)= ෆ",
     "description": "Stressed after coding for hours? Need a break? Perhaps an inspiration? Something to calm your nerves after almost pushing that fatal git commit? It's Kitty Time! =(＾● ⋏ ●＾)= ෆ",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "publisher": "QzSG",
     "author": {
         "name": "Adrian",
@@ -80,7 +80,7 @@
         "vscode-test": "^1.3.0"
     },
     "dependencies": {
-        "axios": "^0.21.1",
+        "axios": "^0.21.4",
         "xml2js": "^0.4.19"
     }
 }
