@@ -37,7 +37,7 @@ A 💖 full of 🐱 is required.
 
 This extension contributes the following settings:
 
-* `kittyTime.apiKey`: Get api key from https://thecatapi.com/api-key-registration.html, unlocks more cats, `cats++`;
+* `kittyTime.apiKey`: Get free api key from https://thecatapi.com/signup, unlocks more cats, `cats++`;
 * `kittyTime.imageType`: Image Type to show (Static / Animated / Both), defaults to Animated. 
 
 Example:
@@ -48,79 +48,6 @@ Example:
 ## Known Issues
 
 Developers have been caught spending more time looking at cats and kittens instead of focusing time on actual development
-
-## Release Notes
-
-### 0.0.1
-
-Development release of Kitty Time
-
------------------------------------------------------------------------------------------------------------
-
-### 0.0.8
-
-- Improve Readme
-- Change API to secure `https` endpoint
-- Bug Fixes (Cats got them all)
-
------------------------------------------------------------------------------------------------------------
-
-### 0.1.0
-
-- Added Cat Facts in footer
-- Some Bug Fixes (Cats got them again)
-
------------------------------------------------------------------------------------------------------------
-
-### 0.2.0
-
-- Use local stylesheets (Kitty now runs slightly faster)
-
------------------------------------------------------------------------------------------------------------
-
-### 0.2.2
-
-- Update VsCode engine version
-
------------------------------------------------------------------------------------------------------------
-
-### 0.3.0
-- Update packages
-- Fix broken theme detection to automatically set background and font colors according to user existing theme
-
------------------------------------------------------------------------------------------------------------
-
-### 0.3.1
-- Update packages
-    - Axios
-
------------------------------------------------------------------------------------------------------------
-
-### 0.3.3
-- Update packages
-
------------------------------------------------------------------------------------------------------------
-
-### 0.4.1
-- Update packages
-
------------------------------------------------------------------------------------------------------------
-
-### 0.4.2
-- Update LICENSE
-
------------------------------------------------------------------------------------------------------------
-
-### 0.4.3
-- Update Axios
-
------------------------------------------------------------------------------------------------------------
-
-### 0.4.4
-- Update package.json
-
------------------------------------------------------------------------------------------------------------
-
 
 ## Acknowledgments
 
