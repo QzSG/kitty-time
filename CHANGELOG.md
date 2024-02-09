@@ -76,3 +76,9 @@ Development release of Kitty Time
 - Updated Cats Api signup url in `README.md`
 
 -----------------------------------------------------------------------------------------------------------
+
+### 0.5.1
+- Added command for option to store API Key using `SecretStorage` instead.
+- Updated Dependencies
+
+-----------------------------------------------------------------------------------------------------------
