@@ -14,16 +14,21 @@ class KittyPanel {
     private readonly _extensionPath: string;
     
     private _config: vscode.WorkspaceConfiguration;
+    
+    private _apiKey: String;
     private _disposables: vscode.Disposable[] = [];
 
-    public static createOrShow(extensionPath: string) {
+    public static async createOrShow(extensionPath: string, secrets: vscode.SecretStorage) {
         const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
         let configChange = false;
-        vscode.workspace.onDidChangeConfiguration(() => {
+        let apiKey = await secrets.get("apiKey");
+        console.log(apiKey);
+        vscode.workspace.onDidChangeConfiguration(async () => {
             const currentDocument = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.document : undefined;
             if (KittyPanel.currentPanel) {
                 KittyPanel.currentPanel.dispose();
-                KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One, extensionPath);
+                KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One, extensionPath, apiKey);
+                console.log("@@@@@@@");
                 if (currentDocument) { vscode.window.showTextDocument(currentDocument, column);}
                 configChange = true;
             }
@@ -35,14 +40,17 @@ class KittyPanel {
                 KittyPanel.currentPanel._panel.reveal(column);
             }
         } else {
-            KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One, extensionPath);
+            console.log("@@@@");
+            KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One, extensionPath, apiKey);
         }
         
     }
 
-    private constructor(column: vscode.ViewColumn, extensionPath: string) {
+    private constructor(column: vscode.ViewColumn, extensionPath: string, apiKey: string|undefined) {
         
         this._config = this._updateConfig();
+        this._apiKey = this._updateApiKey(apiKey);
+
         this._extensionPath = extensionPath;
         this._panel = vscode.window.createWebviewPanel(KittyPanel.viewType, "It's Kitty Time! =(＾● ⋏ ●＾)= ෆ", column, {
         
@@ -75,6 +83,13 @@ class KittyPanel {
     private _updateConfig = () => {
         return vscode.workspace.getConfiguration("kittyTime");
     };
+    private _updateApiKey = (apiKey: string|undefined) => {
+        if (!apiKey) {
+            apiKey = "";
+        }
+        return apiKey!
+    };
+    
 
     public dispose() {
         KittyPanel.currentPanel = undefined;
@@ -93,6 +108,11 @@ class KittyPanel {
     private async _update() {
         await this._updateConfig();
         let {apiKey , imageType} = this._config;
+
+        if (!apiKey) {
+            apiKey = this._apiKey
+        }
+
         //console.log(apiKey , imageType);
         let type = webviewHelper.getType(imageType);        
 
@@ -100,7 +120,7 @@ class KittyPanel {
         // Cat Api Usage
         // TODO: Allow user to add custom api for more cats, allow switching to png or both png and gif
         let CatApiUrl = `https://thecatapi.com/api/images/get?format=xml${type}&size=full&count=1&api_key=${apiKey}`;
-        //console.log(CatApiUrl);
+        console.log(CatApiUrl);
         let CatApiPromise = axios.get(CatApiUrl); 
         let CatFactUrl = `https://catfact.ninja/fact`;
         //console.log(CatApiUrl);

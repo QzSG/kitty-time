@@ -45,6 +45,14 @@ Example:
 "kittyTime.apiKey" : "{Api Key Here}",
 "kittyTime.imageType" : "Animated"
 ```
+
+> As of 0.5.0, you have the option of setting the API Key which will be stored in SecretStorage instead. 
+
+Look for the command: 
+```
+=(＾● ⋏ ●＾)= ෆ : Enter TheCatApi key to unlock more cats (or leave blank for less)
+```
+
 ## Known Issues
 
 Developers have been caught spending more time looking at cats and kittens instead of focusing time on actual development
