@@ -20,7 +20,6 @@ class KittyPanel {
 
     public static async createOrShow(extensionPath: string, secrets: vscode.SecretStorage) {
         const column = vscode.window.activeTextEditor ? vscode.window.activeTextEditor.viewColumn : undefined;
-        let configChange = false;
         let apiKey = await secrets.get("apiKey");
         console.log(apiKey);
         vscode.workspace.onDidChangeConfiguration(async () => {
@@ -30,15 +29,12 @@ class KittyPanel {
                 KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One, extensionPath, apiKey);
                 console.log("@@@@@@@");
                 if (currentDocument) { vscode.window.showTextDocument(currentDocument, column);}
-                configChange = true;
             }
         });
         
         if (KittyPanel.currentPanel) {
-            if (!configChange){
-                configChange = false;
-                KittyPanel.currentPanel._panel.reveal(column);
-            }
+            KittyPanel.currentPanel._panel.reveal(column);
+            KittyPanel.currentPanel._update();
         } else {
             console.log("@@@@");
             KittyPanel.currentPanel = new KittyPanel(column || vscode.ViewColumn.One, extensionPath, apiKey);
