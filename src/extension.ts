@@ -33,7 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
         if (keySet !== "true") {
             await vscode.commands.executeCommand('kittyTime.getApiKey')
         }
-        KittyPanel.createOrShow(context.extensionPath, context.secrets);
+        KittyPanel.createOrShow(context.extensionPath, context.secrets, context.extensionUri);
     });
 
     context.subscriptions.push(disposable);

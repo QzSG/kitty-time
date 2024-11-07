@@ -1,3 +1,5 @@
+import { Webview } from "vscode";
+
 export default {
     getTitle : () : string => {
         const titles: string[] = [
@@ -20,7 +22,7 @@ export default {
         }
         return "";
     },
-    getHead : (nonce : string, bulmaCSSPath : string) :string => {
+    getHead : (nonce: string, bulmaCSSPathUri: string , webview: Webview) :string => {
         return `
             <head>
                 <meta charset="UTF-8">
@@ -28,10 +30,10 @@ export default {
                 Use a content security policy to only allow loading images from https or from our extension directory,
                 and only allow scripts that have a specific nonce.
                 -->
-                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src *; style-src vscode-resource: https: 'nonce-${nonce}';font-src vscode-resource: https: 'nonce-${nonce}'; script-src vscode-resource: https: 'nonce-${nonce}';">
+                <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src *; style-src ${webview.cspSource} https: 'nonce-${nonce}';font-src ${webview.cspSource} https: 'nonce-${nonce}'; script-src ${webview.cspSource} https: 'nonce-${nonce}';">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>It's Kitty Time! =(＾● ⋏ ●＾)= ෆ</title>
-                <link rel="stylesheet" href="${bulmaCSSPath}" integrity="sha256-zIG416V1ynj3Wgju/scU80KAEWOsO5rRLfVyRDuOv7Q=" crossorigin="anonymous" />
+                <link rel="stylesheet" href="${bulmaCSSPathUri}" integrity="sha256-zIG416V1ynj3Wgju/scU80KAEWOsO5rRLfVyRDuOv7Q=" crossorigin="anonymous" />
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             </head>
         `;
