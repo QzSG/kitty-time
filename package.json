@@ -45,7 +45,7 @@
             },
             {
                 "command": "kittyTime.getApiKey",
-                "title": "=(＾● ⋏ ●＾)= ෆ : Enter TheCatApi key to unlock more cats ( or leave blank for less )"
+                "title": "=(＾● ⋏ ●＾)= ෆ : Enter TheCatApi key to unlock more cats (or leave blank for less)"
             }
         ],
         "configuration": {
