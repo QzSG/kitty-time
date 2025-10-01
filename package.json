@@ -2,7 +2,7 @@
     "name": "kitty-time",
     "displayName": "Kitty Time =(＾● ⋏ ●＾)= ෆ",
     "description": "Stressed after coding for hours? Need a break? Perhaps an inspiration? Something to calm your nerves after almost pushing that fatal git commit? It's Kitty Time! =(＾● ⋏ ●＾)= ෆ",
-    "version": "0.5.3a",
+    "version": "0.5.3",
     "publisher": "QzSG",
     "author": {
         "name": "Adrian",
@@ -45,7 +45,7 @@
             },
             {
                 "command": "kittyTime.getApiKey",
-                "title": "=(＾● ⋏ ●＾)= ෆ : Enter TheCatApi key to unlock more cats (or leave blank for less)"
+                "title": "=(＾● ⋏ ●＾)= ෆ : Enter TheCatApi key to unlock more cats ( or leave blank for less )"
             }
         ],
         "configuration": {
