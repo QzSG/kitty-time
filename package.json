@@ -74,18 +74,17 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -w -p ./"
-        
     },
     "devDependencies": {
         "@types/mocha": "^2.2.42",
+        "@types/node": "^16.18.34",
+        "@types/vscode": "^1.73.0",
         "@types/xml2js": "^0.4.3",
         "@vscode/test-electron": "^2.3.9",
-        "@types/node": "^16.18.34",
-		"@types/vscode": "^1.73.0",
-		"typescript": "^5.3.2"
+        "typescript": "^5.3.2"
     },
     "dependencies": {
-        "axios": "^0.26.1",
+        "axios": "^0.30.2",
         "xml2js": "^0.5.0"
     }
 }
