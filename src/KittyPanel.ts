@@ -1,6 +1,5 @@
 import * as vscode from 'vscode';
 import axios from 'axios';
-import { parseString } from 'xml2js';
 import './helper/webviewHelper';
 import webviewHelper from './helper/webviewHelper';
 class KittyPanel {
@@ -85,7 +84,7 @@ class KittyPanel {
     };
     private _updateApiKey = (apiKey: string|undefined) => {
         if (!apiKey) {
-            apiKey = "";
+            apiKey = String(this._apiKey);
         }
         return apiKey!
     };
@@ -107,19 +106,16 @@ class KittyPanel {
 
     private async _update() {
         await this._updateConfig();
-        let {apiKey , imageType} = this._config;
+        let {apiKey} = this._config;
 
         if (!apiKey) {
             apiKey = this._apiKey
         }
-
-        //console.log(apiKey , imageType);
-        let type = webviewHelper.getType(imageType);        
-
+        
         let title = webviewHelper.getTitle();
         // Cat Api Usage
         // TODO: Allow user to add custom api for more cats, allow switching to png or both png and gif
-        let CatApiUrl = `https://thecatapi.com/api/images/get?format=xml${type}&size=full&count=1&api_key=${apiKey}`;
+        let CatApiUrl = `https://api.thecatapi.com/v1/images/search?limit=1&api_key=${apiKey}`;
         console.log(CatApiUrl);
         let CatApiPromise = axios.get(CatApiUrl); 
         let CatFactUrl = `https://catfact.ninja/fact`;
@@ -128,18 +124,12 @@ class KittyPanel {
 
         const [apiRes, factRes] = await Promise.all([CatApiPromise, CatFactPromise]);
         
-        //Cat Api returns XML Body, pass to XML2JS for parsing
-        parseString(apiRes.data, (err, result) => {
-            //console.log(result);
-
-            //XML2JS is pretty awful, look for better XML parser
-            const catSrc = result.response.data[0].images[0].image[0].url[0];
-            const catUrl = result.response.data[0].images[0].image[0].source_url[0];
-            //console.log(catSrc);
-            const catFact = factRes.data.fact;
-            this._updateCat(catSrc, catUrl, title, catFact);
-        });
-
+        const catSrc = apiRes.data[0].url;
+        const catUrl = catSrc;
+        const catFact = factRes.data.fact;
+        console.log(catSrc, catUrl, catFact);
+        this._updateCat(catSrc, catUrl, title, catFact);
+        
     }
 
     private _updateCat(catSrc: string, catUrl: string, title: string, catFact: string) {
